@@ -20,22 +20,31 @@ const server = http.createServer(app);
 
 const posts=[]
  const corsOptions = {
-  origin: ["http://adenmali.com","http://adenmali.com/:80","http://localhost:3000","http://adenmali.com/:3000"],
+   origin: 'http://localhost:3000/',//(https://your-client-app.com)
    optionsSuccessStatus: 200,
  };
-const io = new Server(server,{
-  cors: {
-      origin: ["http://adenmali.com","http://adenmali.com/:80","http://localhost:3000","http://adenmali.com/:3000"]
-  }
-});
+const io = new Server(server);
 
 
 
 
-app.use(cors(corsOptions));
+ app.use(cors(corsOptions));
 app.use( bodyParser.json() );      
 
+// app.post('/post', cors(corsOptions),(req, res) => {
+// 	console.log("hey",req.body)
+// 	posts.unshift(req.body);
+//     res.send(JSON.stringify({"name":"abdi"}))
+// });
 
+// app.post('/login', cors(corsOptions),(req, res) => {
+//     res.send(JSON.stringify(posts))
+// });
+
+// app.get('/post', cors(corsOptions),(req, res) => {
+// 	console.log("inside post",req.body.username)
+//     res.send(JSON.stringify(posts))
+// });
 
 
 app.get('/', (req, res) => {
@@ -44,10 +53,9 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
 
-// console.log('user connected');
+console.log('user connected');
     socket.on('chat message', (msg) => {
-      console.log('message received',msg);
-        io.emit('chat messagew', msg);
+        io.emit('chat message', msg);
       });
 
   socket.on('disconnect', () => {

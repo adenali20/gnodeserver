@@ -1,0 +1,8 @@
+{
+    "rules": {
+        "no-console": "off"
+    },
+    "plugins": [
+        // Remove any plugins you don't want to use
+    ]
+}
