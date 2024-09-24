@@ -39,6 +39,7 @@ app.use( bodyParser.json() );
 
 
 app.get('/', (req, res) => {
+  console.log('get index html');
   res.sendFile(__dirname + '/index.html');
 });
 
