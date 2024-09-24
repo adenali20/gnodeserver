@@ -20,12 +20,12 @@ const server = http.createServer(app);
 
 const posts=[]
  const corsOptions = {
-  origin: ["http://adenmali.com","http://adenmali.com/:80","http://localhost:3000","http://adenmali.com/:3000"],
+  origin: ["http://adenmali.com","http://adenmali.com/:80","http://localhost:3000","http://adenmali.com/:3000","*"],
    optionsSuccessStatus: 200,
  };
 const io = new Server(server,{
   cors: {
-      origin: ["http://adenmali.com","http://adenmali.com/:80","http://localhost:3000","http://adenmali.com/:3000"]
+      origin: ["http://adenmali.com","http://adenmali.com/:80","http://localhost:3000","http://adenmali.com/:3000","*"]
   }
 });
 
